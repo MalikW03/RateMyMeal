@@ -1,29 +1,25 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from base.models import Room
-from .serializers import RoomSerializer
-from base.api import serializers
-
+from base.models import Review
+from .serializers import ReviewSerializer
 
 @api_view(['GET'])
 def getRoutes(request):
     routes = [
         'GET /api',
-        'GET /api/rooms',
-        'GET /api/rooms/:id'
+        'GET /api/reviews',
+        'GET /api/reviews/:id'
     ]
     return Response(routes)
 
-
 @api_view(['GET'])
-def getRooms(request):
-    rooms = Room.objects.all()
-    serializer = RoomSerializer(rooms, many=True)
+def getReviews(request):
+    reviews = Review.objects.all()
+    serializer = ReviewSerializer(reviews, many=True)
     return Response(serializer.data)
 
-
 @api_view(['GET'])
-def getRoom(request, pk):
-    room = Room.objects.get(id=pk)
-    serializer = RoomSerializer(room, many=False)
+def getReview(request, pk):
+    review = Review.objects.get(id=pk)
+    serializer = ReviewSerializer(review, many=False)
     return Response(serializer.data)
