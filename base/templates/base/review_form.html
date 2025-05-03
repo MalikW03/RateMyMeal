@@ -1,0 +1,41 @@
+
+{% extends 'main.html' %}
+{% block content %}
+<main class="layout">
+  <div class="container">
+    <div class="layout__box">
+      <div class="layout__boxHeader">
+        <h3>Submit a Meal Review</h3>
+      </div>
+      <div class="layout__body">
+        <form class="form" method="POST">
+          {% csrf_token %}
+          <div class="form__group">
+            <label for="item_name">Food Item</label>
+            <input required type="text" name="item_name" placeholder="e.g. Chicken Alfredo" />
+          </div>
+
+          <div class="form__group">
+            <label for="description">Review</label>
+            <textarea name="description" rows="5" placeholder="Write your thoughts..."></textarea>
+          </div>
+
+          <div class="form__group">
+            <label for="rating">Rating</label>
+            <div class="star-rating">
+              {% for i in "54321" %}
+                <input type="radio" id="star{{ i }}" name="rating" value="{{ i }}">
+                <label for="star{{ i }}">&#9733;</label>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form__action">
+            <button class="btn btn--main" type="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

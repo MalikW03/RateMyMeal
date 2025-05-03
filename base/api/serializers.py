@@ -1,8 +1,7 @@
 from rest_framework.serializers import ModelSerializer
-from base.models import Room
+from base.models import Review
 
-
-class RoomSerializer(ModelSerializer):
+class ReviewSerializer(ModelSerializer):
     class Meta:
-        model = Room
+        model = Review
         fields = '__all__'

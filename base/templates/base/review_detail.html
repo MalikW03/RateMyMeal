@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% block content %}
+<main class="layout">
+  <div class="container">
+    <div class="review-detail">
+      <h2>{{ review.item_name }}</h2>
+      <p><strong>Rating:</strong> ⭐ {{ review.rating }}</p>
+      <p>{{ review.description }}</p>
+      <p>By <a href="{% url 'user-profile' review.user.id %}">@{{ review.user.username }}</a></p>
+      <p><small>{{ review.created|date:"F j, Y, g:i a" }}</small></p>
+    </div>
+  </div>
+</main>
+{% endblock %}
