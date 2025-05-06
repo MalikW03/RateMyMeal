@@ -2,8 +2,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-from django.contrib import messages
-from .models import Review, User
+from .models import Review, User, FoodItem
 from .forms import UserForm, MyUserCreationForm
 
 
@@ -55,35 +54,47 @@ def registerPage(request):
 
 def home(request):
     q = request.GET.get('q') or ''
-    reviews = Review.objects.filter(item_name__icontains=q)
+    reviews = Review.objects.filter(food_item__name__icontains=q)
     recent_reviews = Review.objects.all().order_by('-created')[:5]
+
     return render(request, 'base/home.html', {
         'reviews': reviews,
         'recent_reviews': recent_reviews
     })
 
-
 @login_required(login_url='login')
 def createReview(request):
     if request.method == 'POST':
-        item_name = request.POST.get('item_name')
+        food_item_id = request.POST.get('food_item')
         rating = request.POST.get('rating')
         description = request.POST.get('description')
 
+        food_item = FoodItem.objects.get(id=food_item_id)
+
         Review.objects.create(
             user=request.user,
-            item_name=item_name,
+            food_item=food_item,
             rating=rating,
             description=description,
         )
         return redirect('home')
 
-    return render(request, 'base/review_form.html')
+    food_items = FoodItem.objects.all()
+    return render(request, 'base/review_form.html', {
+        'food_items': food_items  
+    })
 
 
 def reviewDetail(request, pk):
     review = get_object_or_404(Review, id=pk)
-    return render(request, 'base/review_detail.html', {'review': review})
+    related_reviews = Review.objects.filter(
+        food_item=review.food_item
+    ).exclude(id=pk)[:10]
+
+    return render(request, 'base/review_detail.html', {
+        'review': review,
+        'related_reviews': related_reviews
+    })
 
 
 def userProfile(request, pk):
@@ -111,13 +122,19 @@ def updateReview(request, pk):
     review = get_object_or_404(Review, id=pk, user=request.user)
 
     if request.method == 'POST':
-        review.item_name = request.POST.get('item_name')
+        food_item_id = request.POST.get('food_item')
+        food_item = get_object_or_404(FoodItem, id=food_item_id)
+        review.food_item = food_item
         review.rating = request.POST.get('rating')
         review.description = request.POST.get('description')
         review.save()
         return redirect('review-detail', pk=review.id)
 
-    return render(request, 'base/review_form.html', {'review': review})
+    food_items = FoodItem.objects.all()
+    return render(request, 'base/review_form.html', {
+        'review': review,
+        'food_items': food_items
+    })
 
 
 @login_required(login_url='login')
@@ -129,3 +146,4 @@ def deleteReview(request, pk):
         return redirect('home')
 
     return render(request, 'base/delete.html', {'obj': review})
+

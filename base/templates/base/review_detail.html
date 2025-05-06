@@ -3,11 +3,17 @@
 <main class="layout">
   <div class="container">
     <div class="review-detail">
-      <h2>{{ review.item_name }}</h2>
+      <h2>{{ review.food_item }}</h2>
       <p><strong>Rating:</strong> ⭐ {{ review.rating }}</p>
       <p>{{ review.description }}</p>
       <p>By <a href="{% url 'user-profile' review.user.id %}">@{{ review.user.username }}</a></p>
       <p><small>{{ review.created|date:"F j, Y, g:i a" }}</small></p>
+      {% if request.user == review.user %}
+  <div class="review-controls">
+    <a href="{% url 'update-review' review.id %}" class="btn btn--main">Edit</a>
+    <a href="{% url 'delete-review' review.id %}" class="btn btn--dark">Delete</a>
+  </div>
+{% endif %}
     </div>
   </div>
 </main>
