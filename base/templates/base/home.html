@@ -13,7 +13,7 @@
       {% for review in reviews %}
         <div class="roomListRoom">
           <div class="roomListRoom__header">
-            <h3>{{ review.item_name }}</h3>
+            <h3>{{ review.food_item }}</h3>
             <span>⭐ {{ review.rating }}</span>
           </div>
           <div class="roomListRoom__content">
@@ -21,7 +21,7 @@
           </div>
           <div class="roomListRoom__meta">
             <p>by <a href="{% url 'user-profile' review.user.id %}">@{{ review.user.username }}</a></p>
-            <a href="{% url 'review-detail' review.id %}" class="btn btn--main btn--pill">Read More</a>
+            <a href="{% url 'review-detail' review.id %}" class="btn btn--main btn--pill">View Review</a>
           </div>
         </div>
       {% empty %}
@@ -38,7 +38,7 @@
         <div class="activities__box">
           <div class="activities__boxHeader">
             <p>
-              <strong>{{ recent.item_name }}</strong>
+              <strong>{{ recent.food_item }}</strong>
               <span>by <a href="{% url 'user-profile' recent.user.id %}">@{{ recent.user.username }}</a></span>
             </p>
           </div>
@@ -51,6 +51,23 @@
         </div>
       {% endfor %}
     </div>
+
+    <!-- <div class="layout__left">
+      <div class="layout__box" style="margin-left: 0; max-width: 300px;">
+        <div class="layout__boxHeader">
+          <h3>🔥 Trending Food Items</h3>
+        </div>
+        <div class="layout__body">
+          {% for item in trending_items %}
+            <p><strong>{{ item.food_item__name }}</strong></p>
+            <p>⭐ {{ item.avg_rating|floatformat:1 }} average rating</p>
+            <p>{{ item.num_reviews }} reviews</p>
+            <hr>
+          {% endfor %}
+        </div>
+      </div>
+    </div> -->
+    
 
   </div>
 </main>

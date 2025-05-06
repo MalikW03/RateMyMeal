@@ -12,7 +12,7 @@ class MyUserCreationForm(UserCreationForm):
 class ReviewForm(ModelForm):
     class Meta:
         model = Review
-        fields = ['item_name', 'description', 'rating']
+        fields = ['food_item', 'description', 'rating']
 
 
 class UserForm(ModelForm):
