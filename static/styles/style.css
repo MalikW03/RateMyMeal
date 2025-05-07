@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
-body {
-  background: red ;
-}
+
 :root {
   --color-main: #4a90e2;
   --color-main-light: #e8f0fe;
@@ -26,7 +24,6 @@ body {
   padding: 0;
   box-sizing: border-box;
   text-rendering: optimizeLegibility;
-  /* color: inherit; */
   font-size: inherit;
 }
 
@@ -65,7 +62,6 @@ a {
   text-decoration: none;
 }
 
-/*========== components ==========*/
 .container {
   max-width: 120rem;
   width: 90%;
@@ -264,9 +260,6 @@ a {
   }
 }
 
-/*==============================
-=>  Header Section
-================================*/
 
 .header {
   padding: 1.5rem;
@@ -320,27 +313,6 @@ a {
   color: var(--color-light);
 }
 
-@media screen and (max-width: 800px) {
-  .header__search input {
-    width: 20rem;
-  }
-
-  .header > .container {
-    gap: 3rem;
-  }
-}
-
-@media screen and (max-width: 700px) {
-  .header__logo h1 {
-    display: none;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .header__search {
-    display: none;
-  }
-}
 
 .header__menu {
   margin-left: auto;
@@ -388,9 +360,6 @@ a {
   fill: var(--color-main);
 }
 
-/*==============================
-=>  Layout
-================================*/
 
 .layout {
   margin-top: 2.4rem;
@@ -466,20 +435,6 @@ a {
   margin: 3rem;
 }
 
-@media screen and (max-width: 900px) {
-  .activities,
-  .topics {
-    display: none;
-  }
-
-  .layout--3 > .container > div:nth-child(2) {
-    flex-basis: 100%;
-  }
-}
-
-/*==============================
-=>  Topics
-================================*/
 
 .form__group {
   margin-bottom: 2rem;
@@ -555,61 +510,6 @@ a {
   text-decoration: underline;
 }
 
-/*==============================
-=>  Topics
-================================*/
-
-.topics__header {
-  margin-bottom: 2rem;
-}
-
-.topics__header h2 {
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--color-dark-light);
-}
-
-.topics__list {
-  list-style: none;
-}
-
-.topics__list li a {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  font-weight: 500;
-  color: var(--color-light-gray);
-  transition: all 0.3s ease-in-out;
-}
-
-.topics__list li a.active,
-.topics__list li a:hover {
-  color: var(--color-main);
-}
-
-.topics__list li a span {
-  padding: 0.5rem 1rem;
-  background-color: var(--color-dark);
-  border-radius: 3px;
-  font-size: 1.3rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.topics-page a:hover {
-  text-decoration: underline;
-}
-
-.topics-page .topics__list li:not(:last-child) a {
-  margin: 2rem 0;
-  padding-bottom: 1rem;
-  text-decoration: none;
-  border-bottom: 1px solid var(--color-dark-medium);
-}
-
-.topics-page .header__search{
-  display: block;
-}
 
 @media screen and (max-width: 500px) {
   .mobile-menu .header__search {
@@ -618,75 +518,72 @@ a {
   }
 }
 
-/*==============================
-=>  Room List
-================================*/
 
-.roomList__header {
+.itemList__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2.4rem;
 }
 
-.roomList__header h2 {
+.itemList__header h2 {
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-light);
   letter-spacing: 1px;
 }
 
-.roomList__header p {
+.itemList__header p {
   font-weight: 500;
   color: var(--color-dark-light);
 }
 
-/*========== Room List Room ==========*/
 
-.roomListRoom {
+
+.itemList {
   margin-bottom: 2.4rem;
   background-color: var(--color-dark);
   border-radius: 1rem;
   padding: 2rem;
 }
 
-.roomListRoom__header {
+.itemList__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.roomListRoom__author {
+.itemList__author {
   font-weight: 500;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.roomListRoom__actions {
+.itemList__actions {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
   position: relative;
 }
 
-.roomListRoom__actions span {
+.itemList__actions span {
   font-size: 1.4rem;
   font-weight: 500;
 }
 
-.roomListRoom__actions svg {
+.itemList__actions svg {
   fill: var(--color-main);
 
   width: 1.6rem;
   height: 1.6rem;
 }
 
-.roomListRoom__content {
+.itemList__content {
   margin: 1rem 0;
 }
 
-.roomListRoom__content a {
+.itemList__content a {
   font-size: 2rem;
   font-weight: 500;
   margin-bottom: 1.5rem;
@@ -694,11 +591,11 @@ a {
   transition: all 0.3s ease-in-out;
 }
 
-.roomListRoom__content a:hover {
+.itemList__content a:hover {
   color: var(--color-main);
 }
 
-.roomListRoom__meta {
+.itemList__meta {
   border-top: 1px solid var(--color-dark-medium);
   padding-top: 1rem;
   display: flex;
@@ -706,7 +603,7 @@ a {
   justify-content: space-between;
 }
 
-.roomListRoom__joined {
+.itemList__joined {
   color: var(--color-light-gray);
   display: flex;
   align-items: center;
@@ -715,13 +612,13 @@ a {
   font-weight: 500;
 }
 
-.roomListRoom__joined svg {
+.itemList__joined svg {
   fill: var(--color-main);
   width: 1.6rem;
   height: 1.6rem;
 }
 
-.roomListRoom__topic {
+.itemList__topic {
   padding: 5px 1.5rem;
   background-color: var(--color-dark-medium);
   border-radius: 5rem;
@@ -729,9 +626,6 @@ a {
   font-size: 1.3rem;
 }
 
-/*==============================
-=>  Activities
-================================*/
 
 .activities {
   background: var(--color-dark);
@@ -779,7 +673,7 @@ a {
   text-decoration: underline;
 }
 
-.activities__boxRoomContent {
+.activities__boxItemContent {
   background: var(--color-bg);
   padding: 1rem;
   border-radius: 5px;
@@ -787,37 +681,27 @@ a {
   margin-left: -4.2rem;
 }
 
-.roomListRoom__actions svg {
+.itemList__actions svg {
   fill: var(--color-light-gray);
 }
 
-/*==============================
-=>  Create Room
-================================*/
 
-.create-room.layout .layout__box {
+.create-item.layout .layout__box {
   max-width: 68rem;
 }
 
-/*==============================
-=>  Update Account
-================================*/
+
 
 .update-account.layout .layout__box {
   max-width: 68rem;
 }
 
-/*==============================
-=>  Delete Item
-================================*/
+
 
 .delete-item.layout .layout__box {
   max-width: 68rem;
 }
 
-/*==============================
-=>  Auth
-================================*/
 
 .auth__tagline {
   text-align: center;
@@ -836,9 +720,6 @@ a {
   text-align: center;
 }
 
-/*==============================
-=>  Settings
-================================*/
 
 .settings__avatar {
   margin-bottom: 3rem;
@@ -852,9 +733,6 @@ a {
   margin: 1rem;
 }
 
-/*==============================
-=>  Profile
-================================*/
 .profile {
   margin-bottom: 3rem;
 }
@@ -889,39 +767,17 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.profile-page .roomList__header {
+.profile-page .itemList__header {
   margin-bottom: 1.5rem;
 }
 
-.profile-page .roomList__header h2 {
+.profile-page .itemList__header h2 {
   color: var(--color-dark-light);
 }
 
-/*==============================
-=>  Room
-================================*/
 
-.room,
-.participants {
-  background: var(--color-dark);
-  max-height: 87.5vh;
-  border-radius: 0.7rem;
-  overflow: hidden;
-  position: relative;
-}
 
-@media screen and (max-width: 900px) {
-  .participants {
-    display: none;
-  }
-
-  .layout--2 > .container > div:first-child {
-    flex-basis: 100%;
-  }
-}
-
-.room__top,
-.participants__top {
+.item__top {
   background: var(--color-dark-light);
   display: flex;
   justify-content: space-between;
@@ -930,7 +786,7 @@ a {
   position: relative;
 }
 
-.room__top svg,
+.item__top svg,
 .thread__top svg {
   width: 1.6rem;
   height: 1.6rem;
@@ -938,35 +794,34 @@ a {
   cursor: pointer;
 }
 
-.room__topLeft {
+.item__topLeft {
   display: flex;
   align-items: flex-end;
   gap: 1rem;
 }
 
-.room__topLeft h3,
-.participants__top {
+.item__topLeft h3{
   text-transform: uppercase;
   font-weight: 500;
   color: var(--color-light);
 }
 
-.room__topLeft svg {
+.item__topLeft svg {
   width: 1.6rem;
   height: 1.6rem;
   fill: var(--color-light);
 }
 
-.room__topRight {
+.item__topRight {
   display: flex;
   column-gap: 1em;
 }
 
-.room__topRight svg {
+.item__topRight svg {
   fill: var(--color-main-light);
 }
 
-.room__header {
+.item__header {
   max-height: 30vh;
   overflow-y: auto;
   position: absolute;
@@ -979,13 +834,13 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-  .room__header {
+  .item__header {
     top: 4.3rem;
     padding-right: 2rem;
   }
 }
 
-.room__box {
+.item__box {
   padding-left: 2rem;
   padding-right: 2rem;
   height: 80.5vh;
@@ -994,7 +849,7 @@ a {
 }
 
 @media screen and (max-width: 500px) {
-  .room__box {
+  .item__box {
     padding-left: 2.5rem;
     padding-right: 2rem;
     height: 80.5vh;
@@ -1003,18 +858,18 @@ a {
   }
 }
 
-.room__info {
+.item__info {
   display: flex;
   justify-content: space-between;
 }
 
-.room__info h3 {
+.item__info h3 {
   font-size: 2.4rem;
   font-weight: 500;
   color: var(--color-main);
 }
 
-.room__hosted p {
+.item__hosted p {
   text-transform: uppercase;
   color: var(--color-gray);
   font-size: 1.2rem;
@@ -1024,11 +879,11 @@ a {
 
 
 
-.room__author:hover {
+.item__author:hover {
   text-decoration: underline;
 }
 
-.room__topics {
+.item__topics {
   padding: 0.5rem 1.5rem;
   background: var(--color-dark-light);
   color: var(--color-light);
@@ -1038,63 +893,14 @@ a {
   margin: 1rem 0;
 }
 
-.room__conversation {
+.item__conversation {
   margin-top: 1rem;
   margin-bottom: 4rem;
   height: 64%;
 }
 
-.threads h3 {
-  text-transform: uppercase;
-  font-weight: 500;
-  color: var(--color-gray);
-}
 
-.threads {
-  background: var(--color-bg);
-  border-radius: 0.7rem;
-  overflow-y: auto;
-  height: 100%;
-  margin-top: 28vh;
-  padding: 0 2rem 4rem 2rem;
-}
-
-.thread {
-  border-left: 2px solid var(--color-dark);
-  padding-left: 1rem;
-  margin: 2rem 0;
-  padding: 2rem;
-}
-
-.thread__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.thread__top svg {
-  fill: var(--color-dark-light);
-}
-
-.thread__author {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  font-size: 1.4rem;
-}
-
-.thread__authorInfo {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.thread__details {
-  font-size: 1.4rem;
-  margin-top: 0.5rem;
-}
-
-.room__message {
+.item__message {
   padding: 2rem;
   position: absolute;
   z-index: 111;
@@ -1104,7 +910,7 @@ a {
   background: transparent;
 }
 
-.room__message > form > input {
+.item__message > form > input {
   resize: none;
   background-color: var(--color-dark-light);
   color: var(--color-light);
@@ -1120,45 +926,8 @@ a {
   position: relative;
 }
 
-.room__message > form > input::placeholder {
+.item__message > form > input::placeholder {
   color: var(--color-light-gray);
-}
-
-.participants__top span {
-  color: var(--color-main);
-  font-size: 1.3rem;
-  text-transform: none;
-}
-
-.participants__top {
-  justify-content: flex-start;
-  gap: 0.5rem;
-}
-
-.participants__list {
-  padding: 2rem;
-  height: 82.5vh;
-  overflow-y: scroll;
-  padding-bottom: 0;
-}
-
-.participant {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-.participant p {
-  color: var(--color-light-gray);
-  line-height: 1.2;
-}
-
-.participant span {
-  display: block;
-  font-weight: 500;
-  color: var(--color-main);
-  font-weight: 1.4rem;
 }
 
 .form-errors {
@@ -1208,7 +977,7 @@ a {
   color: #f5c518;
 }
 
-.roomListRoom {
+.itemList {
   margin-bottom: 2rem;
   padding: 2rem;
   border-radius: 8px;
@@ -1216,8 +985,8 @@ a {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.roomListRoom__header,
-.roomListRoom__meta {
+.itemList__header,
+.itemList__meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
