@@ -8,4 +8,6 @@ In order to run file.
 
 4- Additionally run "pip install django-cors-headers" and "pip install Pillow"
 
-Once this is done, create a virtual environment using "python -m venv <env-name>", launch the environment using "<env-name>/scripts/activate", and run "python manage.py runserver" and connect to your localhost web server!
+Once this is done, create a virtual environment using "python -m venv [env-name]", launch the environment using
+
+"[env-name]/scripts/activate", and run "python manage.py runserver" and connect to your localhost web server!
