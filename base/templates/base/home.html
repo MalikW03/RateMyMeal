@@ -5,21 +5,21 @@
 
     <!-- Main Reviews Column -->
     <div>
-      <div class="roomList__header">
+      <div class="itemList__header">
         <h2>All Reviews</h2>
         <a class="btn btn--main" href="{% url 'create-review' %}">+ New Review</a>
       </div>
 
       {% for review in reviews %}
-        <div class="roomListRoom">
-          <div class="roomListRoom__header">
+        <div class="itemList">
+          <div class="itemList__header">
             <h3>{{ review.food_item }}</h3>
             <span>⭐ {{ review.rating }}</span>
           </div>
-          <div class="roomListRoom__content">
+          <div class="itemList__content">
             <p>{{ review.description|truncatechars:150 }}</p>
           </div>
-          <div class="roomListRoom__meta">
+          <div class="itemList__meta">
             <p>by <a href="{% url 'user-profile' review.user.id %}">@{{ review.user.username }}</a></p>
             <a href="{% url 'review-detail' review.id %}" class="btn btn--main btn--pill">View Review</a>
           </div>
